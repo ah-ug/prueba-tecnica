@@ -10,6 +10,9 @@ export const types = {
     authTokenRenew: '[auth] Token renew',
     authLogout: '[auth] Logout',
 
+    authChecking: '[auth] Checking login state',
+    authCheckingFinish: '[auth] Finish checking login state',
+    
     uiSetError: '[UI] Set Error',
     uiRemoveError: '[UI] Remove Error',
 }

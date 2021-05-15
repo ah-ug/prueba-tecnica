@@ -1,28 +1,29 @@
-import { types } from "../types/types";
+import { types } from '../types/types';
 
-/* 
-    {} // no autenticado
-    {
-        uid: jdkfjadf
-        name: 'arturo'
+const initialState = {
+    checking: true,
+    // uid: null,
+    // name: null
+}
 
-    }
-*/
-
-export const authReducer = ( state = {}, action ) => {
+export const authReducer = (state = initialState, action ) => {
     switch ( action.type ) {
         case types.authLogin:
             return {
-                email: action.payload.email,
-                password: action.payload.password
+                ...state,
+                ...action.payload,
+                checking: false
             }
         
-        case types.authLogout:
-            return  {}
-        
-        case types.authRegister:
+        case types.authCheckingFinish:
             return {
-                ...state
+                ...state,
+                checking: false
+            }
+
+        case types.authLogout:
+            return  {
+                checking: false
             }
         
         default:
