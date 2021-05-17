@@ -38,19 +38,15 @@ export const RegisterScreen = () => {
     const isFormValid = () => {
         if ( userName.trim().length === 0 ) {
             dispatch( setError( 'username is required'));
-            console.log('falta username');
             return false;
         }else if ( name.trim().length === 0 ) {
             dispatch( setError( 'name is required'));
-            console.log('f1');
             return false;
         } else if ( !validator.isEmail( email ) ){
             dispatch( setError('email not valid') );
-            console.log('f2');
             return false;
         } else if ( password !== password2 || password.length < 5 ) {
             dispatch( setError('Password must be at least 6 characters and match each other') );
-            console.log('f3');
             return false;
         }
 

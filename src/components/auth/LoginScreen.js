@@ -24,7 +24,6 @@ export const LoginScreen = () => {
     return (
         <>
             <div className='container-register'>
-
                 <form
                     onSubmit={handleLogin}
                     className="form-group"
@@ -32,17 +31,6 @@ export const LoginScreen = () => {
                     <div className='logo'>
                         <img src={Logo} id="logo-login" alt='LogoStardew'/>
                     </div>
-
-                    {/* //TODO: Agregar msgError
-                        {
-                            msgError &&
-                            (
-                                <div className="auth__alert-error">
-                                { msgError}
-                                </div>
-                                )
-                            }  */
-                            }
 
                     <input
                         type="text"
