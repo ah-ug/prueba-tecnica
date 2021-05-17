@@ -3,6 +3,22 @@
     margin-bottom: 20px;
 }
 
+#logo-login {
+    display: block;
+    /* min-height: 80px; */
+    /* min-width: 80px; */
+    height: 100%;
+    width: 100%;
+}
+
+#logo-register {
+    display: block;
+    /* min-height: 80px; */
+    /* min-width: 80px; */
+    height: 100%;
+    width: 100%;
+}
+
 .container-register {
     margin-top: 5%;
     /* padding: 0% 1.5% 3% 1.5%; */

@@ -12,19 +12,19 @@ export const startLogin = (email, password) => {
             localStorage.setItem('token', body.token);
             localStorage.setItem('token-init-date', new Date().getTime());
 
-            dispatch(login({
+            await dispatch(login({
                 uid: body.uid,
-                name: body.name,
-                lastName: body.lastName,
-                userName: body.userName,
                 email: body.email,
+
             }))
         } else {
             Swal.fire('Error', body.msg , 'error');
         }
         await dispatch( login({
-            email,
-            password
+            name: body.name,
+            lastName: body.lastName,
+            userName: body.userName,
+            email
         }) );
     }
 }
@@ -53,7 +53,7 @@ export const startRegister = (userName, name, lastName, email, password) => {
 
 export const startChecking = () => {
     return async(dispatch) => {
-        const resp = await fetchConToken('renew');
+        const resp = await fetchConToken('auth/renew');
         const body = await resp.json();
 
         if (body.ok) {

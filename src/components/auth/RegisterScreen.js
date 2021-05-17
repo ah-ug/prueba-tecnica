@@ -14,12 +14,12 @@ export const RegisterScreen = () => {
     const { msgError } = useSelector(state => state.ui); 
 
     const [formValues, handleInputChange] = useForm({
-        userName: 'Caupo',
-        name: 'Caupolican',
-        lastName: 'Urra',
-        email: 'caupo@gmail.com',
-        password: '123456',
-        password2: '123456'
+        userName: '',
+        name: '',
+        lastName: '',
+        email: '',
+        password: '',
+        password2: ''
     });
 
     const { userName, name, lastName, email, password, password2 } = formValues;
@@ -67,7 +67,7 @@ export const RegisterScreen = () => {
                     className="form-group"
                 >   
                     <div className='logo'>
-                        <img src={Logo} alt='LogoStardew' height='140px'/>
+                        <img src={Logo} id="logo-register" alt='LogoStardew' height='140px'/>
                     </div>
 
                     { 
@@ -78,14 +78,13 @@ export const RegisterScreen = () => {
                             </div>
                         )
                     } 
-
-                    {/* <label for="Name">Nombre</label> */}
                     
                     <input
                         type="text"
                         className="form-control"
                         placeholder="Username"
                         name="userName"
+                        autoComplete="off"
                         value={ userName }
                         onChange={handleInputChange}
                     />
@@ -126,6 +125,7 @@ export const RegisterScreen = () => {
                         type="password"
                         placeholder="Password"
                         name="password"
+                        autoComplete="off"
                         className="form-control"
                         value={password}
                         onChange={handleInputChange}

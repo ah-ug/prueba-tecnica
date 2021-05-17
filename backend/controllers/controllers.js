@@ -6,11 +6,12 @@ const { generarJWT } = require('../helpers/jwt');
 
 const register = async(req, res = response) => {
 
-    const { email, userName, password } = req.body;
+    const { userName,  email, password } = req.body;
 
     try {
         // Verificar si el correo ya está registrado
         let user = await User.findOne({ email });
+
         if ( user ) {
             return res.status(400).json({
                 ok: false,
@@ -32,7 +33,7 @@ const register = async(req, res = response) => {
         const salt = bcrypt.genSaltSync();
         user.password = bcrypt.hashSync(password, salt);
         await user.save();
-
+        console.log('Usuario registrado')
         // Generar JWT
         const token = await generarJWT(user.id, user.name);
 
@@ -40,6 +41,8 @@ const register = async(req, res = response) => {
             ok: true,
             username: user.userName,
             name: user.name,
+            lastName: user.lastName,
+            email: user.email,
             password: user.passord,
             token
         })
@@ -52,17 +55,16 @@ const register = async(req, res = response) => {
         })
     }
 }
-// TODO: terminar login
+
 const login = async(req, res = response) => {
 
     const { email, password } = req.body;
 
     try {
-        console.log(email);
         // Verificar si el email está registrado
         let userVerifier = await User.findOne({ email });
         // const emailUser = await User.findOne({ email });
-        console.log(userVerifier);
+        // console.log(userVerifier);
         if ( !userVerifier ) {
             return res.status(400).json({
                 ok: false,
@@ -86,7 +88,9 @@ const login = async(req, res = response) => {
         res.json({
             ok: true,
             uid: userVerifier.id,
+            userName: userVerifier.userName,
             name: userVerifier.name,
+            lastName: userVerifier.lastName,
             token
         })
 
@@ -100,7 +104,6 @@ const login = async(req, res = response) => {
 }
 
 const renewToken = async(req, res = response) => {
-    console.log('Hola')
     const { uid, name } = req;
 
     // Generar un neuvo JWT y retornarlo en esta peticion

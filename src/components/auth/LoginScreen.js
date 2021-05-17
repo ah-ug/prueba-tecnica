@@ -30,7 +30,7 @@ export const LoginScreen = () => {
                     className="form-group"
                 >   
                     <div className='logo'>
-                        <img src={Logo} alt='LogoStardew'/>
+                        <img src={Logo} id="logo-login" alt='LogoStardew'/>
                     </div>
 
                     {/* //TODO: Agregar msgError

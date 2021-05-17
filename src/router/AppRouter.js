@@ -9,7 +9,6 @@ import { LoginScreen } from "../components/auth/LoginScreen";
 import { RegisterScreen } from "../components/auth/RegisterScreen";
 import { Home } from "../components/home/Home";
 
-// TODO: Implementar rutas privadas y publicas.
 import { PrivateRoute } from "./PrivateRoute";
 import { PublicRoute } from "./PublicRoute";
 
