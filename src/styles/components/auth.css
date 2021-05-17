@@ -3,46 +3,48 @@
     margin-bottom: 20px;
 }
 
-.limiter {
-    width: 100%;
-    margin: 0 auto;
-    background: #f2f2f2; 
-}
-
 .container-register {
-    background-color: #363636;
-    width: 100%;  
-    min-height: 100vh;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
+    margin-top: 5%;
+    /* padding: 0% 1.5% 3% 1.5%; */
+    /* background-color: red; */
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    padding: 15px;
-    
+    /* padding: ; */
+    /* height: 800px; */
 }
 
 .link {
     color: #363636;
     text-decoration: none;
+    text-align: center;
+    font-size: 26px;
+    margin-top: 0% !important;
+    margin-bottom: 25px;
 }
 
 .form-group {
-    padding: 20px;
     background-color: #efac68;
     border: 5px solid #683d23;
+    box-shadow: -7px 12px 20px black;
+    min-height: 560px;
+    text-align: center;
+    align-content: center;
+    padding: 20px;
     border-radius: 2%;
+    min-width: 345px;  
+    width: 20%;
+    margin-left: 8%;
+    margin-right: 7%;
+    margin-bottom: 2%;
 }
 
 .form-control {
-    margin: 5px;
     background-color: #f9ba65;
     border: 2px solid #683d23;
     border-radius: 5%;
-    color: #87340b
+    color: #87340b;
+    margin-bottom: 5px;
+    font-size: 25px;
 }
 
 .auth__alert-error {

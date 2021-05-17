@@ -14,10 +14,13 @@ export const startLogin = (email, password) => {
 
             dispatch(login({
                 uid: body.uid,
-                name: body.name
+                name: body.name,
+                lastName: body.lastName,
+                userName: body.userName,
+                email: body.email,
             }))
         } else {
-            Swal.fire('Error', body.msg, 'error');
+            Swal.fire('Error', body.msg , 'error');
         }
         await dispatch( login({
             email,
@@ -26,13 +29,25 @@ export const startLogin = (email, password) => {
     }
 }
 
-export const startRegister = (name, email, password) => {
-    return async(dispatch) => {
-        dispatch(login(
-            name,
-            email,
-            password
-        ) )
+export const startRegister = (userName, name, lastName, email, password) => {
+    return async (dispatch) => {
+        const resp = await fetchSinToken('users/register', {userName, name, lastName, email, password }, 'POST');
+        const body = await resp.json();
+
+        if (body.ok) {
+            localStorage.setItem('token', body.token);
+            localStorage.setItem('token-init-date', new Date().getTime());
+
+            dispatch(login({
+                uid: body.uid,
+                userName: body.userName,
+                name: body.name,
+                lastName: body.lastName,
+                email: body.email,
+            }))
+        } else {
+            Swal.fire('Error', body.msg, 'error');
+        }
     }
 }
 
@@ -56,12 +71,12 @@ export const startChecking = () => {
     }
 }
 
-const checkingFinish = () => ({ type: types.authCheckingFinish });
-
 const login = (user) => ({
     type: types.authLogin,
     payload: user
 })
+
+const checkingFinish = () => ({ type: types.authCheckingFinish });
 
 export const startLogout = () => {
     return (dispatch) => {

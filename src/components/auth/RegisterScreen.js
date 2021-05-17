@@ -1,54 +1,55 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import validator from 'validator';
 import { startRegister } from '../../actions/auth';
 import { setError, removeError } from '../../actions/ui';
 import { useForm } from '../../hooks/useForm';
+import Logo from '../../images/logoStardew.png';
 
 export const RegisterScreen = () => {
-/* 
-    name: 'Hernando',
-    email: 'nando@gmail.com',
-    password: '123456',
-    password2: '123456',
-*/  
-    const dispatch = useDispatch();
 
+    const dispatch = useDispatch();
     const { msgError } = useSelector(state => state.ui); 
 
     const [formValues, handleInputChange] = useForm({
-        name: '',
-        email: '',
-        password: '',
-        password2: '',
+        userName: 'Caupo',
+        name: 'Caupolican',
+        lastName: 'Urra',
+        email: 'caupo@gmail.com',
+        password: '123456',
+        password2: '123456'
     });
 
-    const { name, email, password, password2 } = formValues;
+    const { userName, name, lastName, email, password, password2 } = formValues;
 
     const handleRegister = ( e ) => {
         e.preventDefault();
 
         if( isFormValid() ) {
-            console.log(name, email, password, password2);
-
-            dispatch(startRegister(name, email, password));
+            dispatch(startRegister(userName, name, lastName, email, password, password2 ) );
+            return Swal.fire('Success', 'Creation has been successful', 'success' );
         } else {
             console.log('f');
         }
     }
 
     const isFormValid = () => {
-        if ( name.trim().length === 0 ) {
-            dispatch( setError( 'El nombre es requerido'));
+        if ( userName.trim().length === 0 ) {
+            dispatch( setError( 'username is required'));
+            console.log('falta username');
+            return false;
+        }else if ( name.trim().length === 0 ) {
+            dispatch( setError( 'name is required'));
             console.log('f1');
             return false;
         } else if ( !validator.isEmail( email ) ){
-            dispatch( setError('Email no válido') );
+            dispatch( setError('email not valid') );
             console.log('f2');
             return false;
         } else if ( password !== password2 || password.length < 5 ) {
-            dispatch( setError('Password debe tener al menos 6 caracteres y deben coincidir') );
+            dispatch( setError('Password must be at least 6 characters and match each other') );
             console.log('f3');
             return false;
         }
@@ -64,8 +65,10 @@ export const RegisterScreen = () => {
                 <form
                     onSubmit={handleRegister}
                     className="form-group"
-                >
-                    <h3 className="auth__title">Registro</h3>    
+                >   
+                    <div className='logo'>
+                        <img src={Logo} alt='LogoStardew' height='140px'/>
+                    </div>
 
                     { 
                         msgError &&
@@ -77,15 +80,37 @@ export const RegisterScreen = () => {
                     } 
 
                     {/* <label for="Name">Nombre</label> */}
+                    
                     <input
                         type="text"
-                        placeholder="Nombre"
-                        name="name"
                         className="form-control"
+                        placeholder="Username"
+                        name="userName"
+                        value={ userName }
+                        onChange={handleInputChange}
+                    />
+
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Name"
+                        name="name"
                         autoComplete="off"
                         value={name}
                         onChange={handleInputChange}
                     />
+
+                    <input
+                        type="text"
+                        placeholder="Lastname"
+                        name="lastName"
+                        className="form-control"
+                        autoComplete="off"
+                        value={lastName}
+                        onChange={handleInputChange}
+                    />
+
+
 
                     <input
                         type="text"
@@ -99,7 +124,7 @@ export const RegisterScreen = () => {
 
                     <input
                         type="password"
-                        placeholder="Contraseña"
+                        placeholder="Password"
                         name="password"
                         className="form-control"
                         value={password}
@@ -108,7 +133,7 @@ export const RegisterScreen = () => {
 
                     <input
                         type="password"
-                        placeholder="Confirme Contraseña"
+                        placeholder="Confirm password"
                         name="password2"
                         className="form-control"
                         value={password2}
@@ -119,15 +144,15 @@ export const RegisterScreen = () => {
                         type="submit"
                         className="btn btn-primary btn-block mb-5"
                     >
-                        Registrar
+                        Register
                         </button>
                     
-                    <div className="form-control">
+                    <div className="link">
                         <Link
-                            to="/auth/login"
+                            to="/"
                             className="link"
                         >
-                            Ya estás registrado?
+                            Already register?
                         </Link>
                     </div>
                 </form>

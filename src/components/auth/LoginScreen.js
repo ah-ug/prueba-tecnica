@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { startLogin } from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
+import Logo from '../../images/logoStardew.png';
 
 export const LoginScreen = () => {
 
@@ -22,23 +23,26 @@ export const LoginScreen = () => {
     
     return (
         <>
-            <div className='limiter container-register'>
+            <div className='container-register'>
 
                 <form
                     onSubmit={handleLogin}
                     className="form-group"
-                >
-                    <h3 className="auth__title">Login</h3>
+                >   
+                    <div className='logo'>
+                        <img src={Logo} alt='LogoStardew'/>
+                    </div>
+
                     {/* //TODO: Agregar msgError
                         {
                             msgError &&
                             (
                                 <div className="auth__alert-error">
-                                    { msgError}
+                                { msgError}
                                 </div>
-                            )
-                        } 
-                    */}
+                                )
+                            }  */
+                            }
 
                     <input
                         type="text"
@@ -52,26 +56,26 @@ export const LoginScreen = () => {
 
                     <input
                         type="password"
-                        placeholder="Contraseña"
+                        placeholder="Password"
                         name="password"
                         className="form-control"
                         value={password}
                         onChange={handleInputChange}
                     />
 
-                    <button
-                        type="submit"
-                        className="btn btn-primary btn-block mb-5"
-                    >
-                        Registrar
-                    </button>
+                        <button
+                            type="submit"
+                            className="btn btn-primary btn-block mb-5"
+                        >
+                            Login
+                        </button>
 
-                    <div>
+                    <div className="link">
                         <Link
                             to="/auth/register"
                             className="link"
                         >
-                            Crear cuenta nueva
+                            Create a new account
                         </Link>
                     </div>
                 </form>

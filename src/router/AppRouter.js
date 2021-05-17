@@ -29,12 +29,12 @@ export const AppRouter = () => {
         <Router>
             <Switch>
                 <PublicRoute
-                    exact path="/login"
+                    exact path="/"
                     component={LoginScreen} 
                     isAuthenticated={ !!uid }
                 />
                 <PublicRoute 
-                    exact path="/register"
+                    exact path="/auth/register"
                     component={RegisterScreen}
                     isAuthenticated={ !!uid } 
                 />
