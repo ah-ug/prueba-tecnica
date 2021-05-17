@@ -7,7 +7,6 @@ export const Home = () => {
     const dispatch = useDispatch();
 
     const { name, lastName, userName, email } = useSelector((state) => state.auth);
-    // console.log(name, lastName, userName, email);
     const handleLogout = () => {
         dispatch(startLogout());
     };
@@ -42,20 +41,9 @@ export const Home = () => {
                                 </div>
                                 <div className="mt-3">
                                     <h4 className='home'> { userName } </h4>
-                                        {/* <button className="btn btn-primary">Follow</button>
-                                        <button className="btn btn-outline-primary">Message</button> */}
                                 </div>
                             </div>
                         </div>
-                    {/*  <div className="card mt-3">
-                            <ul className="list-group list-group-flush">
-                                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap"></li>
-                                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap"></li>
-                                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap"></li>
-                                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap"></li>
-                                <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap"></li>
-                            </ul>
-                        </div> */}
                     </div>
                     <div className="col-md-9">
                         <div className="card mb-3">
