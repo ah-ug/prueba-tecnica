@@ -6,10 +6,11 @@
     padding-top: 0.1%;    
     padding-left: 2%;
     border-radius: .8rem;
-    width: 75%;
+    width: 85%;
     box-shadow: -2px 2px 7px black;
     cursor: url('../../utils/CursorHD.png'), auto;
     font-size: 26px;
+
 }
 
 #logo-home {
@@ -20,7 +21,6 @@
 
 .card {
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
-    position: relative;
     display: block;
     flex-direction: column;
     background-color: #ffc699;
@@ -37,8 +37,8 @@
 }
 
 .card-body {
-    padding: 1rem;
     justify-content: center;
+
 }
 
 .gutters-sm {
@@ -58,6 +58,13 @@
     width: fit-content;
 }
 
+.mb-3 {
+    /* margin-right: 5%; */
+}
+.col-md-9 {
+    /* margin-left: 0.5%; */
+}
+
 .bg-gray-300 {
     background-color: #ffc699;
 }
@@ -71,26 +78,28 @@
 }
 
 .home {
-    align-content: center;
-    align-items: center;
     background-color: #ffd284;
     border: 1px solid #bc6805;
     border-radius: 10px 5px 10px 5px;
     font-family: SVBold;
     font-size: 30px;
-    margin-left: 15%;
     text-align: center;
     box-shadow: -2px 2px 7px rgba(0, 0, 0, 0.555);
-    width: 25%;
-    min-width: 115px;
+    width: fit-content;
+    min-width: 125px;
+    padding: 1%;
     justify-content: center;
+    
+}
+
+.biography {
+    margin-left: 15%;
 }
 
 .row.home {
     margin-bottom: 5%;
-    padding-left: 5%;
-    padding-right: 5%;
-    width: 30%;
+    
+    width: 35%;
     min-width: 150px;
 }
 
@@ -100,10 +109,15 @@
     box-shadow: -2px 2px 7px black;
     margin-top: 5%;
     margin-left: 5%;
+    margin-right: 2%;
     height: 230px;
     width: fit-content;
+    
+    white-space: nowrap;
 }
-
+.username{
+    padding-left: 5%;
+}
 .progress.mb-3 {
     height:5px;
 }

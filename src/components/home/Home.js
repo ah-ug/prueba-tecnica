@@ -40,7 +40,7 @@ export const Home = () => {
                                     />
                                 </div>
                                 <div className="mt-3">
-                                    <h4 className='home'> { userName } </h4>
+                                    <h4 className='home username'> { userName } </h4>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +48,7 @@ export const Home = () => {
                     <div className="col-md-9">
                         <div className="card mb-3">
                             <div className="card-body">
-                                <div className="row home">
+                                <div className="row home biography">
                                     Biography
                                 </div>
                                 <div className="row">
